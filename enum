@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+enum color{
+    red,
+    green,
+    brown,
+};
+int main() {
+    color c1=red;
+    color c2=brown;
+    color c3=green;
+    
+    cout<<"red: "<<c1<<endl;
+    cout<<"blue: "<<c2<<endl;
+    cout<<"green: "<<c3<<endl;
+    
+    
+   
+
+    return 0;
+}
