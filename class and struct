@@ -1,0 +1,27 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+struct Student{
+    private:
+    string name;
+    int age;
+    public:
+    //contructor...
+    Student(int a, string n){
+        name=n;
+        age=a;
+    }
+    void getdisplay(){
+    cout<<"name: "<<name<<endl;
+    cout<<"Age: "<<age<<endl;
+        
+    }
+};
+int main() {
+    // Student s;
+    int age=14;
+    
+    string name="Jiyo raja";
+    Student s(age,name);
+    s.getdisplay();
+}
