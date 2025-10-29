@@ -1,0 +1,71 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class node{
+   public: 
+    int data;
+    node* next;
+    //constructor:------
+    node(int d){
+        this->data=d;
+        this->next=NULL;
+        
+    }
+};
+void insertatfirst(node* &head, int d){
+    node* temp=new node(d);
+    temp->next=head;
+    head=temp;
+}
+void deletenode(int post, node* &head){
+    if(post==1){
+        node* temp=head;
+        head=head->next;
+    }
+    else{
+        node* curr=head;
+        node* pre=NULL;
+        int cnt=1;
+        while(cnt<post){
+            pre=curr;
+            curr=curr->next;
+            cnt++;
+        }
+    pre->next=curr->next;
+    curr->next=NULL;
+    delete curr;
+    }
+}
+
+void insertatposition(node* &head,int post,int d){
+    node* temp=head;
+    int cnt=1;
+    while(cnt<post-1){
+        temp=temp->next;
+        cnt++;
+    }
+    node* newnode=new node(d);
+    newnode->next=temp->next;
+    temp->next=newnode;
+}
+void printll(node* head){
+    node* temp=head;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+int main() {
+    node* head=NULL;
+    insertatfirst(head,12);
+    insertatfirst(head,120);
+    insertatfirst(head,1200);
+    printll(head);
+    cout<<endl<<"insertatanyposition: ";
+    insertatposition(head,2,45);
+    printll(head);
+    cout<<endl;
+    deletenode(2,head);
+    printll(head);
+    
+}
