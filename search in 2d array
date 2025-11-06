@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n = 4;
+    int arr[n][n];
+
+    // Input matrix
+    co
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    int target = 15;
+    int i = 0, j = n - 1;
+    bool found = false;
+
+    while(i < n && j >= 0) {
+        if(arr[i][j] == target) {
+            cout << "Position of i: " << i << " and j: " << j << endl;
+            found = true;
+            break;
+        }
+        else if(arr[i][j] > target) {
+            j--; // move left
+        } else {
+            i++; // move down
+        }
+    }
+
+    if(!found) {
+        cout << "Target not found" << endl;
+    }
+
+    return 0;
+}
