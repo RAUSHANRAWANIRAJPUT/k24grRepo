@@ -1,0 +1,88 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Queue {
+public:
+    int arr[100];
+    int rear;
+    int front;
+    int size;
+
+    Queue() {
+        rear = -1;
+        front = 0;
+        size = 0;
+    }
+
+    bool isFull() {
+        return size == 100;
+    }
+
+    bool isEmpty() {
+        return size == 0;
+    }
+
+    void enqueue(int x) {  
+        if (isFull()) {
+            cout << "Queue is full" << endl;
+        } 
+        else {
+            rear = (rear + 1) % 100; 
+            arr[rear] = x;
+            size++;
+        }
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            cout << "Queue is empty" << endl;
+        } else {
+            front = (front + 1) % 100; // move front forward
+            size--;                    // decrease size
+        }
+    }
+
+    int peek() {
+        if (isEmpty()) {
+            cout << "Queue is empty" << endl;
+            return -1;
+        }
+        return arr[front];
+    }
+    
+    void traversal(){
+        if (isEmpty()) {
+        cout << "Queue is empty";
+        return;
+        }
+        int temp=front;
+        int cnt=0;
+        while(cnt<size){
+            cout<<arr[temp]<<" ";
+            temp=(temp+1)%100;
+            cnt++;
+        }
+    }
+};
+
+int main() {
+    Queue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.enqueue(40);
+    q.enqueue(50);
+
+    // cout << "Front element: " << q.peek() << endl;
+
+    q.traversal();
+    cout<<endl;
+    
+    q.dequeue();
+    q.traversal();
+    
+    // cout << "Front after dequeue: " << q.peek() << endl;
+    cout<<endl;
+    q.dequeue();
+    q.traversal();
+}
