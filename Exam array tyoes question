@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+void findIntersection(int* arr1, int size1, int* arr2, int size2, int* intersection, int& sizeIntersection) {
+    sizeIntersection = 0;
+
+    for(int i = 0; i < size1; i++) {
+        for(int j = 0; j < size2; j++) {
+            if(arr1[i] == arr2[j]) {
+
+                bool already = false;
+                for(int k = 0; k < sizeIntersection; k++) {
+                    if(intersection[k] == arr1[i]) {
+                        already = true;
+                        break;
+                    }
+                }
+
+                if(!already) {
+                    intersection[sizeIntersection] = arr1[i];
+                    sizeIntersection++;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int size1, size2;
+    cin >> size1;
+
+    int arr1[size1];
+    for(int i = 0; i < size1; i++) {
+        cin >> arr1[i];
+    }
+
+    cin >> size2;
+
+    int arr2[size2];
+    for(int i = 0; i < size2; i++) {
+        cin >> arr2[i];
+    }
+
+    int intersection[ size1 < size2 ? size1 : size2 ];
+    int sizeIntersection = 0;
+
+    findIntersection(arr1, size1, arr2, size2, intersection, sizeIntersection);
+
+    if(sizeIntersection == 0) {
+        cout << "No common IDs found";
+    } else {
+        for(int i = 0; i < sizeIntersection; i++) {
+            cout << intersection[i] << " ";
+        }
+    }
+
+    return 0;
+}
