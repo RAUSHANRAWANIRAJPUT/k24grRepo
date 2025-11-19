@@ -1,0 +1,65 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node* next;
+    node(int d){
+        data=d;
+        next=NULL;
+    }
+};
+void insertattail(node* &head,int d){
+    node* newnode=new node(d);
+    node* temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->next=newnode;
+}
+
+void insertatpos(node* &head, int pos, int d){
+    node* newnode=new node(d);
+    node* temp=head;
+    int cnt=1;
+    while(cnt<pos && temp!=NULL){
+        temp=temp->next;
+        cnt++;
+    }
+    node* front=temp->next;
+    temp->next=newnode;
+    newnode->next=front;
+}
+void dhead(node* &head,int pos){
+    node* temp=head;
+    int cnt=1;
+    while(cnt<pos){
+        temp=temp->next;
+        cnt++;
+    }
+     temp;
+}
+void printll(node* head){
+    node* temp=head;
+    while(temp!=nullptr){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+int main() {
+    node* head=new node(10);
+    insertattail(head,1);
+    insertattail(head,2);
+    insertattail(head,3);
+    insertattail(head,4);
+    printll(head);
+    cout<<endl;
+    insertatpos(head,2,1000);
+    printll(head);
+    cout<<endl;
+    dhead(head);
+    printll(head);
+
+
+}
